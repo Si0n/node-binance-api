@@ -2144,9 +2144,9 @@ let api = function Binance( options = {} ) {
     };
 	
 	/**
-    * Universal Transfer requires API permissions enabled 
+    * Universal Transfer requires API permissions enabled
     * @param {string} type - ENUM , example MAIN_UMFUTURE for SPOT to USDT futures, see https://binance-docs.github.io/apidocs/spot/en/#user-universal-transfer
-    * @param {string} asset - the asset - example :USDT    * 
+    * @param {string} asset - the asset - example :USDT    *
     * @param {number} amount - the callback function
     * @param {function} callback - the callback function
     * @return {promise}
@@ -3479,11 +3479,11 @@ let api = function Binance( options = {} ) {
 
         /**
         * Get the deposit history for given asset
-        * @param {string} asset - the asset
+        * @param {string} coin - the coin
         * @param {function} callback - the callback function
         * @return {promise or undefined} - omitting the callback returns a promise
         */
-        depositAddress: function ( asset, callback ) {
+        depositAddress: function ( coin, callback ) {
             if ( !callback ) {
                 return new Promise( ( resolve, reject ) => {
                     callback = ( error, response ) => {
@@ -3493,10 +3493,10 @@ let api = function Binance( options = {} ) {
                             resolve( response );
                         }
                     }
-                    signedRequest( wapi + 'v3/depositAddress.html', { asset: asset }, callback );
+                    signedRequest( sapi + 'v1/capital/deposit/address', { coin }, callback );
                 } )
             } else {
-                signedRequest( wapi + 'v3/depositAddress.html', { asset: asset }, callback );
+                signedRequest( sapi + 'v1/capital/deposit/address', { coin }, callback );
             }
         },
 
@@ -4650,7 +4650,7 @@ let api = function Binance( options = {} ) {
 			universalTransfer(type, asset, amount, callback),
 
         /**
-        * Get trades for a given symbol - margin account 
+        * Get trades for a given symbol - margin account
         * @param {string} symbol - the symbol
         * @param {function} callback - the callback function
         * @param {object} options - additional options

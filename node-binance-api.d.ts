@@ -95,7 +95,7 @@ declare module "node-binance-api" {
          */
         subscriptions(...args: any): any[];
         subscriptions(...args: any): any;
-        
+
         /**
          * Terminates a web socket
          * @param {string} endpoint - the string associated with the endpoint
@@ -667,12 +667,12 @@ declare module "node-binance-api" {
         depositHistory(...args: any): any;
 
         /**
-        * Get the deposit history for given asset
-        * @param {string} asset - the asset
+        * Get the deposit history for given asset/coin
+        * @param {string} coin - the asset/coin
         * @param {function} callback - the callback function
         * @return {promise or undefined} - omitting the callback returns a promise
         */
-        depositAddress(asset: string, callback?: _callback): Promise<any>;
+        depositAddress(coin: string, callback?: _callback): Promise<any>;
         depositAddress(...args: any): any;
 
         /**
@@ -751,7 +751,7 @@ declare module "node-binance-api" {
         */
         aggTrades(symbol: _symbol, options?: any, callback?: _callback): Promise<any>;
         aggTrades(...args: any): any;
-        
+
         /**
         * Get the recent trades
         * @param {string} symbol - the symbol
@@ -1405,7 +1405,7 @@ declare module "node-binance-api" {
          * Futures WebSocket mark price
          * @param {symbol} symbol name or false. can also be a callback
          * @param {function} callback - callback function
-         * @param {string} speed - 1 second updates (@1s). leave blank for default 3 seconds 
+         * @param {string} speed - 1 second updates (@1s). leave blank for default 3 seconds
          * @return {string} the websocket endpoint
          */
         futuresMarkPriceStream(symbol?: _symbol, callback?: _callback, speed?: string): string;
